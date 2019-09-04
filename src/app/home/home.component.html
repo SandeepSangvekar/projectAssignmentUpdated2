@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+
+     
+        <div class="col-md-12">
+            <!-- <div class="heading text-center">
+                <h1 class="title">
+                  {{ title }}
+                </h1>
+              </div> -->
+        <div class="search-bar">
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for name or sir name">
+                <!-- <input id="input-text" type="text" class="form-control" (input)="search($event)" placeholder="Enter First Name" > -->
+        </div>
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="bg-info">
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Created</th>
+            <th scope="col">Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let z of response | paginate: { itemsPerPage: 10, currentPage: p } | filter:searchText">
+            <td>{{z.first}}</td>
+            <td>{{z.last}}</td>
+            <td>{{z.email}}</td>
+            <td>{{z.address}}</td>
+            <td>{{z.created}}</td>
+            <td>{{z.balance}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagina">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+  </div>
+</div>
+
